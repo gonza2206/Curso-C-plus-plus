@@ -1,6 +1,9 @@
 #include <iostream>
 #include <stdlib.h>
 #include <cstdlib> // Incluye la librería necesaria para rand() y srand()
+#include <vector>
+#include "excercise.h"
+
 class Test
 {
 private:
@@ -88,12 +91,62 @@ void leerVector(const uint8_t *array, uint8_t tamano) // NO USAR REFERENCIAS A P
 }
 
 using namespace std;
+namespace mynamespace
+{
+    int x = 10;
+}
+
+void funcion(const std::vector<int> &vector, void (*func_ptr)(const std::vector<int> &))
+{
+    func_ptr(vector);
+}
+
+void mostrar(const std::vector<int> &vector)
+{
+    for (auto &element : vector)
+    {
+        std::cout << element << std::endl;
+    }
+}
+
+bool esUnDiez(const int8_t &x)
+{
+    bool status;
+    x == 10 ? status = true : status = false;
+    return status;
+}
+
+void testfunction(bool (*funcionX)(const int8_t &valor))
+{
+    int x = 10;
+    bool retorno = funcionX(x);
+    if (retorno)
+    {
+        std::cout << "Es un diez" << std::endl;
+    }
+    else
+    {
+        std::cout << "no es un diez" << std::endl;
+    }
+}
+
+void test2(uint8_t *x)
+{
+    std::cout << "Memory position: " << (void *)x << " Valor del puntero: " << (int)*x << std::endl;
+}
 
 int main()
 {
+    std::vector<int> prueba{1, 2, 3, 4, 5};
+    funcion(prueba, &mostrar);
+    int value = 3;
+    int *pointer = &value;
+    testfunction(&esUnDiez);
+
     uint8_t numero = 1;
     uint8_t *puntero1;
     puntero1 = &numero;
+    test2(puntero1);
     double num;
     using Int = uint8_t; // es lo mismo decir Int que uint8_t
 
@@ -128,25 +181,64 @@ int main()
         test.getData();
     }
     cout << "Fuera del scope..." << std::endl;
+
+    string names[] = {
+        "Fred", "Wilma", "Pebbles", "Dino", "Barney", "Betty", "Bamm-Bamm", "Hoppy"};
+
+    cout << "names[1][2] = " << names[1 * 4 + 2] << std::endl;
+
+    cout << "\nThe elements of names are:\n";
+    for (int row = 0; row < 2; ++row)
+    {
+        for (int col = 0; col < 4; ++col)
+        {
+            cout << names[row * 4 + col] << ", ";
+        }
+        cout << "\n";
+    }
+
+    vector<int> vector1{1, 2, 3, 4, 5};
+    // definimos automaticamente a it como un iterador que va a ir aumentando de uno en uno
+
+    for (auto it = begin(vector1); it < end(vector1); it++)
+    {
+        cout << *it << ",";
+    }
+    cout << std::endl;
+
+    for (auto i = rbegin(vector1); i < rend(vector1); i++)
+    {
+        cout << *i << std::endl;
+    }
+
+    for (auto it = cbegin(vector1); it < cend(vector1); it++)
+    {
+        if (*it % 2 == 0)
+        {
+            vector1.erase(it);
+        }
+    }
+
+    for (auto el : vector1)
+    {
+        std::cout << el;
+    }
+    std::cout << std::endl;
+    auto mid = begin(vector1); // defino mid como un iterador,
+    advance(mid, 2);
+    std::cout << *mid << std::endl;
+    string str{"hola"};
+    int x = 3;                                // si bien declaro la variable x aca
+    std::cout << mynamespace::x << std::endl; // aca muestro la variable x del namespace "mynamespace"
+
+    vector<int> pruebaDeVector{1, 2, 3, 4, 5, 6};
+
+    std::cout << "Puntero al comienzo del vector:  " << *pruebaDeVector.data() << "\nTamano del vector: " << pruebaDeVector.size() << std::endl;
+
+    std::string sentence{"To be, or not to be, that is the question:"};
+    std::cout << "Ejercicio: " << exercise::exclaim(sentence) << std::endl;
     
-    
-     string names[] = {
-		"Fred", "Wilma", "Pebbles", "Dino", "Barney", "Betty", "Bamm-Bamm", "Hoppy"
-	};
-
-	cout << "names[1][2] = " << names[1*4 + 2] << std::endl;
-
-	cout << "\nThe elements of names are:\n";
-	for (int row = 0; row < 2; ++row) {
-		for (int col = 0; col < 4; ++col) {
-			cout << names[row*4 + col] << ", ";
-		}
-		cout << "\n";
-	}
-
-
 
 
     return 0;
 }
-
