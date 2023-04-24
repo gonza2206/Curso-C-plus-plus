@@ -3,8 +3,8 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**",
-                "${workspaceFolder}/nociones_basicas/headers"
+                "${workspaceFolder}/**"
+
             ],
             "defines": [
                 "_DEBUG",

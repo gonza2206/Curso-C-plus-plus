@@ -2,6 +2,99 @@
 
 ### Para abrir la pestaña de Markdown apreta F1 y busca Markdown Open review.
 
+# Índice
+
+- [<a style="color: #E6E6FA;" href="#conceptos-de-repaso">Conceptos de Repaso</a>](#conceptos-de-repaso)
+
+  - [Funciones](#funciones)
+  - [Pasar un una variable por valor](#pasar-un-una-variable-por-valor-)
+    - [_Output_](#_output_)
+  - [Pasar un valor por direccion de memoria (address)](#pasar-un-valor-por-direccion-de-memoria-address)
+    - [_Output_](#_output_-1)
+  - [Pasar un valor por referencia](#-pasar-un-valor-por-referencia)
+    - [_Output_](#_output_-2)
+  - [Pasar un valor por referencia constante (const reference)](#pasar-un-valor-por-referencia-constante-const-reference)
+  - [Diferencia entre semanticas. Semantica de valor y semantica de referencia.](#diferencia-entre-semanticas-semantica-de-valor-y-semantica-de-referencia-)
+  - [Universal Initialization](#universal-initialization-)
+    - [¿Cuál es la diferencia entre nullptr y NULL en C++?](#%C2%BFcual-es-la-diferencia-entre-nullptr-y-null-en-c)
+  - [Creacion de alias](#creacion-de-alias)
+  - [Special Member Functions](#special-member-functions-)
+  - [Explicacion ampliada sobre el operador de asignacion.](#explicacion-ampliada-sobre-el-operador-de-asignacion)
+  - [Pointers and memory](#pointers-and-memory-)
+  - [Memory leak (Fuga de memoria)](#memory-leak-fuga-de-memoria)
+  - [Dangling pointer (puntero colgante)](#dangling-pointer-puntero-colgante)
+  - [VECTOR LIBRARY](#vector-library-)
+  - [TWO DIMENTIONAL ARRAY](#two-dimentional-array)
+    - [Iteracion](#iteracion)
+    - [Flatened](#flatened)
+  - [NUMERIC TYPES](#numeric-types-)
+    - [Tipos de datos básicos:](#tipos-de-datos-basicos)
+    - [Tipos de datos derivados:](#tipos-de-datos-derivados)
+    - [Tipos de datos compuestos:](#tipos-de-datos-compuestos)
+  - [Bases](#bases)
+    - [Caracteres para destacar el tipo de base](#caracteres-para-destacar-el-tipo-de-base)
+  - [STRING LITERALS](#string-literals-)
+  - [CASTING](#-casting-)
+  - [ITERATORS](#iterators-)
+  - [Agregar y quitar elementos de un vector con Iteradores](#agregar-y-quitar-elementos-de-un-vector-con-iteradores)
+  - [Auto](#auto-)
+    - [¿Por qué es importante el "auto"?](#%C2%BFpor-que-es-importante-el-auto)
+  - [Usando auto y const](#usando-auto-y-const)
+  - [Iterators and Loops](#iterators-and-loops-)
+  - [Range for loops](#range-for-loops-)
+    - [¿Como podemos modificar los elementos dentro del Loop?](#%C2%BFcomo-podemos-modificar-los-elementos-dentro-del-loop)
+    - [¿Cuando no es conveniente usar este tipo de iteradores?](#%C2%BFcuando-no-es-conveniente-usar-este-tipo-de-iteradores)
+  - [Iterators Arithmetic](#iterators-arithmetic-)
+  - [Templates](#templates-)
+    - [Class templates](#class-templates)
+  - [Namespace](#namespace-)
+    - [Global namespace](#global-namespace)
+    - [Name hiding](#name-hiding)
+  - [using declarations](#using-declarations)
+  - [Function pointer](#function-pointer)
+
+- [<a style="color: #E6E6FA;" href="#string-interface">String interface</a>](#string-interface)
+
+  - [Basic String Operations](#-basic-string-operations-)
+  - [Converting between Strings and numbers](#converting-between-strings-and-numbers-)
+    - [¿Qué sucede si hay caracteres en la cadena que no son dígitos?](#%C2%BFque-sucede-si-hay-caracteres-en-la-cadena-que-no-son-digitos)
+    - [¿Cómo podemos detectar errores de conversión con std::stoi?](#%C2%BFcomo-podemos-detectar-errores-de-conversion-con-stdstoi)
+  - [Convertir numeros a strings utilizando to_string()](#convertir-numeros-a-strings-utilizando-to_string)
+  - [Some useful operations with strings](#-some-useful-operations-with-strings-)
+  - [data() member function](#data-member-function)
+  - [Swapping](#swapping)
+  - [Character Functions](#character-functions-)
+  - [Comparacion entre dos string caseSensitive](#comparacion-entre-dos-string-casesensitive)
+
+- [<a style="color: #E6E6FA;" href="#files-and-streams-solutions">Files and Streams Solutions</a>](#files-and-streams-solutions)
+
+  - [File Stream](#file-stream-)
+  - [Como leer un archivo](#como-leer-un-archivo-)
+  - [Como abrir un archivo para escritura](#como-abrir-un-archivo-para-escritura)
+  - [¿Qué sucede cuando se llama al destructor de fstream?](#%C2%BFque-sucede-cuando-se-llama-al-destructor-de-fstream)
+  - [Streams and Buffering](#streams-and-buffering-)
+  - [Como funciona el buffering?](#como-funciona-el-buffering)
+  - [Unbuffered Input and Output](#unbuffered-input-and-output-)
+    - [¿Cuándo es útil?](#%C2%BFcuando-es-util)
+  - [read() y wite()](#-read-y-wite)
+    - [¿Qué argumentos toman las funciones read() y write()?](#%C2%BFque-argumentos-toman-las-funciones-read-y-write)
+  - [gcount()](#gcount)
+    - [¿Por qué es útil?](#%C2%BFpor-que-es-util)
+  - [Stream Member Functions and State](#stream-member-functions-and-state-)
+  - [Random Access to Streams](#random-access-to-streams-)
+  - [MODOS](#modos-)
+  - [Stream Iterators](#stream-iterators)
+  - [Binary Files](#binary-files-)
+  - [Problema de alineamiento de datos y bits de relleno](#problema-de-alineamiento-de-datos-y-bits-de-relleno)
+  - [Directiva pack()](#directiva-pack)
+    - [¿Que es una directiva?](#%C2%BFque-es-una-directiva)
+  - [UTILITIES (en expansion)](#-utilities-en-expansion-)
+  - [MOVE()](#move)
+
+- [<a style="color: #E6E6FA;" href="#special-member-functions-and-operators">Special Member Functions and Operators</a>](#special-member-functions-and-operators)
+  - [Constructor](#constructor)
+  - [Copy Constructor](#CopyConstructor-Overview)
+
 <!--  Este es un comentario de ejemplo -->
 
 # Conceptos de Repaso
@@ -9,6 +102,8 @@
 ## Funciones
 
 ## <span style="color: yellow;">Pasar un una variable por valor </span>
+
+[Volver al índice](#índice)
 
 Cuando pasamos una variable a una función y no hacemos nada especial, se pasa por valor. Esto significa que habrá un valor local, "y", dentro de esta función que se inicializará a partir de cualquier variable que pasemos a ella.
 
@@ -49,6 +144,8 @@ After calling function(), z = 2
 
 ## <span style="color: yellow;">Pasar un valor por direccion de memoria (address)</span>
 
+[Volver al índice](#índice)
+
 Ahora, habrá una variable local y, que es un puntero a un entero, y la dirección será la dirección de x.
 
 Si hacemos una operación de desreferenciación (\*y), esto nos dará los datos en esa dirección de memoria, que también son utilizados por la variable x.
@@ -86,6 +183,8 @@ After calling function(), x = 1
 After calling function(), z = 1
 
 ## <span style="color: yellow;"> Pasar un valor por referencia</span>
+
+[Volver al índice](#índice)
 
 La otra forma de cambiar la dirección de memoria de x es mediante el uso de paso por referencia.
 
@@ -134,6 +233,7 @@ Como se puede apreciar en la salida, ahora las direcciones de memoria de "x" e "
 
 ## <span style="color: yellow;">Pasar un valor por referencia constante (const reference)</span>
 
+[Volver al índice](#índice)  
 Finalmente, algo útil que puedes hacer es pasar por referencia constante.
 
 Esto significa que la cosa a la que se hace referencia no se puede cambiar.
@@ -176,6 +276,8 @@ int main(int argc, char const *argv[])
 
 ## <span style="color: yellow;">Diferencia entre semanticas. Semantica de valor y semantica de referencia. </span>
 
+[Volver al índice](#índice)
+
 En la semántica de valor, que es la que utiliza C++ por defecto, al copiar un objeto se crea una copia independiente del objeto original. En cambio, en la semántica de referencia, que utilizan otros lenguajes como Java, C# y Python, al inicializar un objeto a partir de otro o pasar un objeto a una función, se obtiene una referencia al objeto original, es decir, no se crea una nueva copia sino que se comparte la misma memoria utilizada por el objeto original.
 
 Para administrar la memoria en la semántica de referencia, muchos lenguajes utilizan un _recolector de basura_ ("garbage collector"), un programa interno que mantiene un registro de todos los objetos en el programa y sus relaciones, y que decide qué objetos ya no están en uso y pueden ser eliminados de la memoria. En cambio, en C++, se administra la memoria manualmente, lo que significa que el programador debe asignar y liberar la memoria de los objetos según sea necesario.
@@ -184,6 +286,8 @@ La semántica de valor de C++ tiene la ventaja de no requerir el uso de un recol
 C++ no utiliza un recolector de basura debido a su énfasis en el rendimiento y la eficiencia.
 
 ## <span style="color: yellow;">Universal Initialization </span>
+
+[Volver al índice](#índice)
 
 Una de las nuevas características es la sintaxis de inicialización universal que permite inicializar diferentes tipos de la misma manera mediante llaves. Además, se puede inicializar contenedores con múltiples valores en una sola sentencia en lugar de tener que declarar el vector como vacío y luego agregar elementos. También se soluciona un error de larga data en C que permitía ignorar los datos adicionales que son demasiado grandes para un tipo de datos numérico, lo que permite trunca los datos. Además, se soluciona otro problema con la sintaxis de declaración de objeto. La característica más importante es la corrección de errores que C++ 11 introduce.
 
@@ -269,6 +373,8 @@ IntVec v2; // es lo mismo que vector<int> v2;
 En resumen, crear un alias para un tipo de dato puede mejorar la legibilidad y mantenibilidad del código. En lugar de tener que escribir un tipo de dato largo y complejo repetidamente en el código, se puede utilizar un alias más corto y fácil de entender.
 
 ## <span style="color: yellow;">Special Member Functions </span>
+
+[Volver al índice](#índice)
 
 Las funciones especiales de C++, que están relacionadas con la gestión de objetos y su ciclo de vida. Estas funciones se llaman automáticamente por el compilador y no se suelen llamar explícitamente. Las cuatro funciones especiales son:
 
@@ -394,6 +500,8 @@ En este ejemplo, creamos una clase Example con un miembro int x. La operación d
 
 ## <span style="color: yellow;">Pointers and memory </span>
 
+[Volver al índice](#índice)
+
 Un puntero es una variable que representa una dirección en la memoria, y su valor es la dirección en sí.
 
 Ejemplo de declaracion de punteros:
@@ -480,6 +588,8 @@ _Es importante usar el operador correcto para evitar errores de memoria en el pr
 
 ## <span style="color: yellow;">VECTOR LIBRARY </span>
 
+[Volver al índice](#índice)
+
 La librería "vector" de C++ es un contenedor de datos dinámico que permite almacenar un conjunto de elementos de un mismo tipo. Los elementos se almacenan en una estructura de datos que crece y disminuye dinámicamente según se añaden o eliminan elementos, lo que la hace muy flexible en comparación con arrays estáticos.
 
 Ejemplo 1: Crear un vector vacío y agregar elementos a él.
@@ -555,6 +665,8 @@ Output: El primer elemento es 1
 
 ## <span style='color: yellow;'>TWO DIMENTIONAL ARRAY</span>
 
+[Volver al índice](#índice)
+
 Formas de definir un array:
 
 ### Iteracion
@@ -607,6 +719,8 @@ Elemento en fila m * numeroColumnas + columna del elemento.
 names[fila*4 + columna].
 
 ## <span style='color: yellow;'>NUMERIC TYPES </span>
+
+[Volver al índice](#índice)
 
 En C++, hay varios tipos de datos que se pueden utilizar para declarar variables. Aquí hay una lista de los tipos de datos más comunes:
 
@@ -679,6 +793,8 @@ De esta forma es mas facil de leer y el compilador entiende que es un millon.
 
 ## <span style='color: yellow;'>STRING LITERALS </span>
 
+[Volver al índice](#índice)
+
 En C++, un string literal es una secuencia de caracteres entre comillas dobles. Por ejemplo, "Hola mundo" es un string literal en C++ que representa la cadena de texto "Hola mundo".
 
 En C++, los string literals tienen un tipo de dato constante, llamado "array de caracteres constante", que es un conjunto de caracteres consecutivos en memoria. Por lo tanto, los string literals en C++ se representan como un puntero a un array de caracteres constante.
@@ -714,6 +830,8 @@ En el tercer caso usamos un delimitador "x", esta forma es la mas segura ya que 
 
 ## <span style='color: yellow;'> CASTING </span>
 
+[Volver al índice](#índice)
+
 Existen 4 tipos diferentes de casteos:
 
 1. **_static_cast<>_**  
@@ -736,6 +854,8 @@ Existen 4 tipos diferentes de casteos:
    Convierte un puntero o una referencia a un objeto a otro tipo de datos relacionado en tiempo de ejecución, verificando si la conversión es segura. Este tipo de casting se utiliza principalmente en situaciones donde se necesita convertir un puntero a una clase base a un puntero a una clase derivada, o para realizar conversiones entre punteros a clases relacionadas en una jerarquía de clases. Si la conversión no es posible, el resultado de dynamic_cast será un puntero o una referencia nulo.
 
 ## <span style='color: yellow;'>ITERATORS </span>
+
+[Volver al índice](#índice)
 
 Un iterador es un objeto en C++ que permite recorrer y manipular los elementos de un contenedor, como un arreglo, un vector, una lista, un conjunto o un mapa. Un iterador se utiliza para acceder a los elementos de un contenedor sin exponer su representación interna, lo que proporciona una capa de abstracción y seguridad.
 
@@ -827,6 +947,8 @@ Este es un ejemplo básico de cómo agregar y quitar elementos en un vector util
 
 ## <span style='color: yellow;'>Auto </span>
 
+[Volver al índice](#índice)
+
 Cuando definimos una variable podemos escribir "auto" en lugar de un tipo, el compilador deducira el tipo de dato para incializar la variable.
 
 ### ¿Por qué es importante el "auto"?
@@ -902,6 +1024,8 @@ _x_ va a ser un valor de tipo entero.
 
 ## <span style='color: yellow;'>Iterators and Loops </span>
 
+[Volver al índice](#índice)
+
 Ademas del iterador comun que solo avanza en una direccion podemos definir otros 3 iteradores:
 
 1. Const iterator : Si queremos evitar que un loop modifique un string podemos usar _const_iterator_
@@ -963,7 +1087,9 @@ int main() {
 }
 ```
 
-## Range for loops
+## <span style='color: yellow;'>Range for loops </span>
+
+[Volver al índice](#índice)
 
 Tenemos una forma especial de anotar los bucles for como estos:
 
@@ -1032,6 +1158,7 @@ Si no estamos trabajando en esas condiciones es recomendable usar este tipo de f
 
 ## <span style='color: yellow;'>Iterators Arithmetic </span>
 
+[Volver al índice](#índice)  
 Podemos realizar calculos con los iteradores, como:
 
 - Sumar un iterador: esto provoca que se mueva un lugar hacia adelante en el contenedor.
@@ -1058,7 +1185,10 @@ Como no esta bueno poner numeros en un codigo hay funciones que hacen lo mismo q
   auto mid = begin(vector1); // defino mid como un iterador,
   advance(mid, 2);//avanzo dos lugares
   std::cout << *mid << std::endl; //muestro el valor.
+  vector.front(); //Va a la primera posicion de memoria.
 ```
+
+words.front() es una función miembro de la clase std::vector en C++. Retorna una referencia al primer elemento del vector, es decir, el elemento que se encuentra en la posición 0.
 
 Un iterador es un puntero, por lo que solo puede sumarse o restarse. No es un numero por el cual puede ser dividido. Por lo que intentar hacer esto:
 
@@ -1070,6 +1200,7 @@ No tiene sentido en C++.
 
 ## <span style='color: yellow;'>Templates </span>
 
+[Volver al índice](#índice)  
 En C++, las plantillas (también conocidas como templates en inglés) son una herramienta de programación que permite definir funciones y clases genéricas, es decir, funciones y clases que pueden trabajar con diferentes tipos de datos.
 
 Las plantillas en C++ se definen utilizando la palabra clave template, seguida de la definición de la función o clase. Por ejemplo, aquí hay una función plantilla que toma un argumento de tipo genérico T y lo imprime en la consola:
@@ -1148,6 +1279,7 @@ Test(const string& data) : data(in_data) {}
 
 ## <span style='color: yellow;'>Namespace </span>
 
+[Volver al índice](#índice)  
 Un namespace en C++ es un mecanismo de encapsulamiento que se utiliza para evitar conflictos de nombres entre diferentes componentes de un programa. Un namespace es como un contenedor que agrupa diferentes elementos (variables, funciones, clases, etc.) bajo un mismo nombre, para que puedan ser referidos de forma única y evitar colisiones con otros elementos que tienen el mismo nombre.
 
 ¿Como definimos un namespace?
@@ -1248,6 +1380,7 @@ Es importante tener en cuenta que el uso excesivo de using puede llevar a confli
 
 ## <span style='color: yellow;'>Function pointer</span>
 
+[Volver al índice](#índice)  
 Pasar funciones con punteros es una técnica utilizada en C++ para poder pasar funciones como argumentos a otras funciones.
 
 En C++, una función es en realidad una dirección de memoria que apunta a un bloque de código en el programa. Por lo tanto, se pueden usar punteros para almacenar estas direcciones de memoria y luego pasarlas como argumentos a otras funciones.
@@ -1354,6 +1487,7 @@ void testfunction (int &x )
 
 ## <span style='color: yellow;'> Basic String Operations </span>
 
+[Volver al índice](#índice)  
 en C++ existen varios métodos que se utilizan frecuentemente para manipular cadenas de caracteres o strings. Algunos de los métodos más utilizados son:
 
 - length() o size(): devuelve la longitud de la cadena.
@@ -1388,6 +1522,7 @@ bool empty = myString.empty(); // Devuelve false
 
 ## <span style='color: yellow;'>Converting between Strings and numbers </span>
 
+[Volver al índice](#índice)  
 Una de las maneras que tiene C++ de convertir strings a enteros es con la funcion miembro std::stoi
 
 ```C++
@@ -1473,6 +1608,8 @@ int main() {
 
 ## <span style='color: yellow;'> Some useful operations with strings </span>
 
+[Volver al índice](#índice)
+
 ## data() member function
 
 El método data() de la clase std::string se utiliza para obtener un puntero a la cadena de caracteres interna que almacena la instancia de std::string.  
@@ -1535,6 +1672,7 @@ En este ejemplo, se utiliza swap() para intercambiar el contenido de string1 y s
 
 ## <span style='color: yellow;'>Character Functions </span>
 
+[Volver al índice](#índice)  
 Estas son funciones de biblioteca de C++ que se utilizan para verificar si un carácter determinado pertenece a una determinada categoría de caracteres. Aquí hay una breve descripción de cada una de ellas:
 
 **isdigit**: esta función devuelve verdadero si el carácter proporcionado es un dígito (0-9), y falso en caso contrario.
@@ -1625,6 +1763,8 @@ En este ejemplo podemos compara dos string teniendo en cuenta si fueron escritas
 
 # Files and Streams Solutions
 
+[Volver al índice](#índice)
+
 En C++, un archivo está representado por una secuencia de bytes, que es identificada por un nombre de archivo.
 
 ## <span style='color: yellow;'>File Stream </span>
@@ -1645,8 +1785,9 @@ Los file streams también se pueden utilizar para trabajar con archivos binarios
 
 Es importante destacar que la lectura de los archivos es de forma secuencial. Cuando se abre un archivo en modo secuencial, se puede leer o escribir los datos en el archivo solo en el orden en que aparecen. Por ejemplo, si un archivo contiene una lista de nombres, y se quiere leer el archivo secuencialmente, el programa leerá el primer nombre, luego el segundo, el tercero, y así sucesivamente, hasta que llegue al final del archivo.
 
-## Como leer un archivo
+## <span style='color: yellow;'>Como leer un archivo </span>
 
+[Volver al índice](#índice)  
 Como se menciono anteriormente se utiliza la funcion **_getline()_** y se debe pasar como argumento una variable de tipo ifstream y un string en el que guardara el valor leido.
 
 La función getline() en C++ se utiliza para leer una línea completa de texto desde un flujo de entrada. Esta función toma como parámetros un flujo de entrada (por ejemplo, cin) y una variable de tipo string en la cual se almacenará la línea leída.
@@ -1715,6 +1856,8 @@ En general, el proceso para escribir en un archivo con ofstream es bastante senc
 
 ## <span style='color: yellow;'>Streams and Buffering </span>
 
+[Volver al índice](#índice)
+
 En C++, un flujo (stream) es un objeto que permite la entrada o salida de datos desde o hacia una fuente o destino. Los streams se utilizan para leer o escribir datos desde o hacia dispositivos, archivos y otros medios de comunicación.
 
 Por otro lado, el buffering (o almacenamiento en búfer) es un mecanismo utilizado por los streams para mejorar el rendimiento. Cuando se utiliza un stream con buffering, los datos se almacenan en una memoria intermedia antes de ser procesados o enviados. Esto permite que se realicen menos operaciones de entrada o salida, lo que mejora el rendimiento.
@@ -1762,6 +1905,8 @@ En este ejemplo podemos ver como se vacia el buffer gracias al endl lo cual nos 
 
 ## <span style='color: yellow;'>Unbuffered Input and Output </span>
 
+[Volver al índice](#índice)
+
 • La entrada y salida se realizan sin utilizar el búfer interno del stream.  
 • No se realiza formato en los datos.
 
@@ -1793,7 +1938,9 @@ Dentro del bucle, cada carácter leído se muestra en la pantalla utilizando la 
 
 Este enfoque es útil cuando se desea leer o escribir datos de manera eficiente y controlar el flujo de datos uno a uno sin almacenamiento intermedio en un búfer.
 
-## read() y wite()
+## <span style='color: yellow;'> read() y wite()</span>
+
+[Volver al índice](#índice)
 
 Otra forma de trabajar con Unbuffered IO es utilizando read() y write().
 
@@ -1875,6 +2022,8 @@ int main() {
 ```
 
 ## <span style='color: yellow;'>Stream Member Functions and State </span>
+
+[Volver al índice](#índice)
 
 Los objetos de flujo de entrada/salida tienen un conjunto de variables de estado que controlan el estado actual del flujo. Algunas de estas variables incluyen:
 
@@ -1974,6 +2123,8 @@ Al utilizar numeric_limits streamsize ::max() se asegura que se ignoren todos lo
 
 ## <span style='color: yellow;'>Random Access to Streams </span>
 
+[Volver al índice](#índice)
+
 Para realizar acceso aleatorio en un stream de C++, se utilizan dos punteros llamados "get pointer" y "put pointer". El get pointer se utiliza para leer datos del stream, mientras que el put pointer se utiliza para escribir datos en el stream.
 
 En C++, es posible acceder aleatoriamente a un archivo a través de un objeto fstream utilizando el modo de acceso ios::in y ios::out. Para acceder al archivo de manera aleatoria, es necesario utilizar la función **_seekg()_** para establecer la posición del puntero de lectura, y la función **_seekp()_** para establecer la posición del puntero de escritura.
@@ -2017,8 +2168,9 @@ int main() {
 }
 ```
 
-## MODOS
+## <span style='color: yellow;'>MODOS </span>
 
+[Volver al índice](#índice)  
 La linea
 
 ```C++
@@ -2043,6 +2195,8 @@ En C++ existen varios modos de apertura de archivo disponibles que se pueden uti
   Estos modos se pueden combinar utilizando el operador OR ( | ) para crear un modo de apertura personalizado que se adapte a las necesidades específicas del programa.
 
 ## <span style='color: yellow;'>Stream Iterators</span>
+
+[Volver al índice](#índice)
 
 En C++, los Stream Iterators son una forma de acceder a los elementos de un stream como si fueran una secuencia de elementos de un contenedor STL (como un vector o una lista). Los Stream Iterators se definen como clases y proporcionan una interfaz similar a los iteradores de los contenedores STL.
 
@@ -2115,6 +2269,7 @@ En este ejemplo, se crea un ostream_iterator llamado out_it que escribirá en st
 
 ## <span style='color: yellow;'>Binary Files </span>
 
+[Volver al índice](#índice)  
 Los archivos binarios contienen datos en forma de 1 y 0, sin ningún significado aparente. Para hacer que los datos sean útiles para las aplicaciones, utilizamos algún tipo de formato de archivo para darle una estructura a los datos. Este formato puede ser uno estándar, como JPEG para imágenes o ZIP para archivos comprimidos, o podemos crear nuestros propios formatos.
 
 Trabajar con archivos binarios en C++ puede ser un poco complicado debido a que los datos se almacenan en formato de 1s y 0s, lo que puede no tener un significado aparente. Aquí hay algunos consejos y ejemplos que pueden ayudarte a trabajar mejor con archivos binarios:
@@ -2134,7 +2289,8 @@ int datos_leidos[5];
 file.read(reinterpret_cast<char*>(&datos_leidos), sizeof(datos_leidos));
 file.close();
 ```
-reinterpret_cast"char*" es un operador de conversión de tipos en C++ que permite reinterpretar un puntero a cualquier otro tipo de puntero. 
+
+reinterpret_cast"char\*" es un operador de conversión de tipos en C++ que permite reinterpretar un puntero a cualquier otro tipo de puntero.
 En este caso es utilizado para tratar los datos binarios como una secuencia de caracteres.
 
 2. Usa estructuras para representar el formato del archivo: Una buena práctica es definir una estructura que represente el formato de los datos almacenados en el archivo binario. Cada miembro de la estructura representa un campo en el formato del archivo. Esto facilita la lectura y escritura de datos. Aquí hay un ejemplo:
@@ -2226,3 +2382,1568 @@ Una directiva es una instrucción específica en un lenguaje de programación qu
 
 En C++ y otros lenguajes, las directivas se indican por medio de una sintaxis especial. En el caso de las directivas de preprocesador en C++, estas comienzan con el símbolo "#" seguido de la palabra clave que indica la directiva y sus argumentos.
 Como en el caso de pragma() que vimos anteriormente.
+
+## <span style='color: yellow;'> UTILITIES (en expansion) </span>
+
+[Volver al índice](#índice)
+
+## MOVE()
+
+**_std::move_** es una función de la biblioteca estándar de C++ que se utiliza para mover el contenido de un objeto a otro objeto. Esta función se define en la cabecera <utility> y se utiliza principalmente para la optimización de movimiento en la programación moderna de C++.
+
+La función std::move toma un objeto y devuelve una referencia a ese objeto que se considera "movible". La semántica de movimiento en C++ se utiliza para transferir el estado de un objeto existente a otro objeto, evitando así una copia innecesaria de los datos. La función std::move se utiliza para expresar esta intención de mover el estado de un objeto en lugar de copiarlo.
+
+En general, se utiliza std::move en los casos en que no es necesario mantener el estado original del objeto después de transferirlo a otro objeto. Por ejemplo, si se tiene un vector que ya no se va a utilizar y se quiere transferir su contenido a otro vector, en lugar de copiar el contenido del vector original al nuevo vector, se puede utilizar std::move para transferir el contenido del vector original al nuevo vector de manera eficiente.
+
+Es importante tener en cuenta que después de llamar a std::move, el objeto original queda en un estado no especificado y no se puede utilizar más. Por lo tanto, solo debe usarse std::move cuando se sabe que el objeto original ya no se utilizará.
+
+```C++
+#include <iostream>
+#include <vector>
+#include <utility>
+
+int main() {
+    std::vector<int> original{1, 2, 3, 4, 5}; // Vector original
+    std::vector<int> other; // Nuevo vector
+
+    other = std::move(original); // Mover el contenido del vector original al nuevo vector
+
+    // El vector original queda vacío después de transferir su contenido al nuevo vector
+    std::cout << "Tamaño del vector original: " << original.size() << std::endl; // Salida: Tamaño del vector original: 0
+
+    // El nuevo vector contiene los elementos del vector original
+    std::cout << "Tamaño del nuevo vector: " << other.size() << std::endl; // Salida: Tamaño del nuevo vector: 5
+
+    return 0;
+}
+```
+
+# Special Member Functions and Operators
+
+[Volver al índice](#índice)
+
+En esta sección se describen las funciones miembro especiales y operadores de C++.
+
+## <span style='color: yellow;'>Default Constructor </span>
+
+En C++, la inicialización por defecto en constructores es una característica importante que garantiza que las variables miembro de una clase tengan un valor conocido y consistente al inicio de su uso. Si no se proporciona un constructor explícito, el compilador C++ proporcionará automáticamente un constructor por defecto que inicializará las variables miembro de la clase con sus valores por defecto.
+
+El valor por defecto de una variable miembro depende de su tipo de datos. Puede que se incializen en 0 o cualquier valor aleatorio que este en memoria en ese momento. Por lo que no es recomendable dejar los valores por defecto.
+
+C++ admite la inicialización de variables miembro directamente en la declaración de la clase, utilizando la sintaxis de inicialización de miembros. Por ejemplo, en la definición de una clase, se puede escribir:
+
+```C++
+class MyClass {
+  int myInt = 5;
+  double myDouble = 1.23;
+  string myString = "Hello";
+};
+```
+
+Si estamos declarando una clase con valores por defecto y queremos que nuestro objeto pueda ser construido con algunos , ninguno o algunos valores por defecto. No es necesario repetir el constructor para cada caso.
+Es aqui donde entran los **_Delegating Constructors_**.
+
+### Delegating Constructor
+
+Los "delegating constructors" son una característica introducida en C++11 que permite a un constructor llamar a otro constructor de la misma clase para realizar parte de su inicialización.
+
+En otras palabras, un constructor puede "delegar" la responsabilidad de la inicialización de ciertas variables miembro a otro constructor de la misma clase. Esto puede ser útil para reducir la duplicación de código y simplificar la definición de constructores en una clase.
+
+Para usar un delegating constructor, se utiliza la sintaxis especial del constructor, en la que el nombre del constructor a llamar se incluye en la lista de inicialización de miembros. Por ejemplo:
+
+#### Ejemplo 1
+
+```C++
+  class MyClass {
+public:
+  MyClass() : MyClass(0, "") {}
+  MyClass(int i) : MyClass(i, "") {}
+  MyClass(string s) : MyClass(0, s) {}
+  MyClass(int i, string s) : myInt(i), myString(s) {}
+
+private:
+  int myInt;
+  string myString;
+};
+
+```
+
+En este ejemplo, hay cuatro constructores definidos para la clase MyClass. Cada uno de ellos llama a otro constructor utilizando la sintaxis de delegación de constructor. Por ejemplo, el primer constructor llama al constructor MyClass(int i, string s) utilizando los valores por defecto 0 y "".
+
+#### Ejemplo 2
+
+```C++
+  #include <iostream>
+
+using namespace std;
+
+class Internet {
+	public:
+	void connect() { cout << "Connected to internet\n";}
+	void login(const string& id, const string& pw) {
+		cout << "Logged on with username " << id;
+		cout << " and password " << pw << endl;
+		}
+};
+
+class refrigerator {
+    int temperature{2};
+    bool door_open{false};
+    bool power_on{true};
+	Internet internet;
+public:
+	// Default constructor
+	refrigerator() : refrigerator(2, "me", "secret") {}
+
+	// Constructor using default login
+	refrigerator(int temperature) : refrigerator(temperature, "me", "secret") {}
+
+	// Constructor using default temperature
+	refrigerator(const string& id, const string& pw) : refrigerator(2, id, pw) {}
+
+	// Constructor with no defaults
+	refrigerator(int temperature, const string& id, const string& pw) : temperature(temperature) {
+		internet.connect();
+		internet.login(id, pw);
+	}
+
+	void print() {
+		cout << "temperature = " << temperature << endl;
+		cout << boolalpha;
+		cout << "door_open = " << door_open << endl;
+		cout << "power_on = " << power_on << endl;
+	}
+};
+
+int main() {
+	refrigerator fridge;
+	fridge.print();
+}
+```
+
+Los delegating constructors pueden ayudar a reducir la complejidad y el tamaño del código al reutilizar la inicialización común en diferentes constructores de la misma clase. También pueden ayudar a mantener la coherencia en la inicialización de las variables miembro, evitando errores y comportamientos inesperados.
+
+## <span style='color: yellow;'>Copy Constructor Overview </span>
+
+[Volver al índice](#índice)
+Un constructor de copia es un tipo especial de constructor en la programación orientada a objetos que se utiliza para crear un nuevo objeto copiando los valores de un objeto existente de la misma clase. El constructor de copia toma una referencia a un objeto existente y crea un nuevo objeto con los mismos valores que el original.
+
+El constructor de copia es útil en situaciones en las que una función necesita crear un nuevo objeto que sea una copia de un objeto existente. También se utiliza para pasar objetos por valor a funciones o para devolver objetos por valor desde funciones.
+
+El prototipo del constructor de copia es:
+
+```C++
+T(const T& other);
+```
+
+Aquí, T es el nombre de la clase y other es una referencia a un objeto de la misma clase que se está copiando. El constructor de copia suele definirse como una función miembro de la clase, y se genera automáticamente por el compilador si el programador no lo proporciona.
+
+Es importante tener en cuenta que el constructor de copia solo se utiliza al crear un nuevo objeto mediante la copia de un objeto existente. No se utiliza para asignaciones o inicializaciones de objetos con otros objetos o tipos de datos primitivos.
+
+## <span style='color: yellow;'>Asignment Operator </span>
+
+Un operador de asignación establece que los miembros de un objeto existente tengan los mismos valores que otro objeto de la misma clase.
+
+¿Cuál es el prototipo del operador de asignación?
+
+```C++
+T& operator = (const T& other); // Operador de asignación para el tipo T
+```
+
+### ¿Cómo se invoca?
+
+Siempre que escribimos una instrucción como
+
+```C++
+a = b;
+```
+
+El compilador generará un código que llamará al operador con el argumento adecuado
+El operador es una función miembro, por lo que se llamará como
+
+```C++
+a.operator=(b);
+```
+
+Si no proporcionamos un operador de asignación, el compilador generará un operador de asignación predeterminado que Asignara los miembros de datos que son tipos integrados
+
+### ¿En qué circunstancias es necesario?
+
+• Cuando el predeterminado no es suficientemente bueno  
+• Por lo general, esto ocurre cuando la clase administra un recurso.
+
+## <span style='color: yellow;'> Shallow and Deep Copying</span>
+
+En C++, cuando se trabaja con objetos y punteros, es común que se necesite crear copias de los mismos. Hay dos formas de copiar objetos y punteros en C++: Shallow Copy (Copia Superficial) y Deep Copy (Copia Profunda).
+
+## Shallow Copy
+
+La Copia Superficial o Shallow Copy simplemente copia el contenido del objeto o puntero a una nueva ubicación de memoria, pero no copia los datos apuntados por el puntero. En otras palabras, la nueva copia apunta a la misma ubicación de memoria que el objeto original. Si se hace una modificación en la copia, también se modificará el objeto original. Esto puede ser útil en algunos casos, pero puede provocar problemas cuando se trabaja con punteros.
+
+```C++
+  #include <iostream>
+using namespace std;
+
+class Shallow {
+private:
+    int *data;
+public:
+    // Constructor
+    Shallow(int d) {
+        data = new int;
+        *data = d;
+    }
+
+    // Copy constructor
+    Shallow(const Shallow &source)
+        : data(source.data) {
+        cout << "Shallow copy constructor - copying data pointer." << endl;
+    }
+
+    // Destructor
+    ~Shallow() {
+        delete data;
+        cout << "Destructor freeing data" << endl;
+    }
+
+    void display_data() {
+        cout << "Data value is " << *data << endl;
+    }
+};
+
+int main() {
+    Shallow obj1 {100};
+    obj1.display_data();
+
+    Shallow obj2 {obj1}; // Shallow copy
+    obj2.display_data();
+
+    *obj1.data = 200; // Modifying data in original object
+    obj1.display_data();
+    obj2.display_data(); // Data value is also changed in the copy object
+
+    return 0;
+}
+```
+
+En este ejemplo, la clase Shallow tiene un puntero a un entero data. El constructor crea una nueva ubicación de memoria para data y copia el valor pasado como argumento. El constructor de copia Shallow simplemente copia el puntero data del objeto original a la nueva copia. El destructor libera la memoria asignada a data. En la función principal, se crea un objeto obj1 y se muestra su valor data. Luego se crea un nuevo objeto obj2 mediante una copia superficial de obj1, y se muestra su valor data. A continuación, se modifica el valor de data en obj1 y se muestra el valor de data para ambos objetos. Como se puede ver, la modificación en el objeto original afecta también al objeto copiado debido a que comparten el mismo puntero a data.
+
+## Deep Copy
+
+La Copia Profunda o Deep Copy copia tanto el contenido del objeto o puntero como los datos apuntados por el puntero. En lugar de simplemente apuntar al mismo lugar que el objeto original, se crea una nueva ubicación de memoria para la copia. Esto significa que cualquier modificación en la copia no afectará al objeto original.
+
+```C++
+ #include <iostream>
+using namespace std;
+
+class Deep {
+private:
+    int *data;
+public:
+    // Constructor
+    Deep(int d) {
+        data = new int;
+        *data = d;
+    }
+
+    // Copy constructor
+    Deep(const Deep &source)
+        : data(new int(*source.data)) {
+        cout << "Deep copy constructor - copying data." << endl;
+    }
+
+    // Destructor
+    ~Deep() {
+        delete data;
+        cout << "Destructor freeing data" << endl;
+    }
+
+    void display_data() {
+        cout << "Data value is " << *data << endl;
+    }
+};
+
+int main() {
+    Deep obj1 {100};
+    obj1.display_data();
+
+    Deep obj2 {obj1}; // Deep copy
+    obj2.display_data();
+
+    *obj1.data = 200; // Modifying data in original object
+    obj1.display_data();
+    obj2.display_data(); // Data value in copy object is not changed
+
+    return 0;
+}
+
+```
+
+En este ejemplo, la clase Deep también tiene un puntero a un entero data. El constructor crea una nueva ubicación de memoria para data y copia el valor pasado como argumento. El constructor de copia Profunda también crea una nueva ubicación de memoria para data y copia el valor apuntado por el puntero del objeto original. El destructor libera la memoria asignada a data. En la función principal, se crea un objeto obj1 y se muestra su valor data. Luego se crea un nuevo objeto obj2 mediante una copia profunda de obj1, y se muestra su valor data. A continuación, se modifica el valor de data en obj1 y se muestra el valor de data para ambos objetos. Como se puede ver, la modificación en el objeto original no afecta al objeto copiado, ya que tienen punteros diferentes a la ubicación de memoria asignada para data.
+
+La Copia Profunda es más segura que la Copia Superficial porque evita problemas con punteros y hace que sea más fácil trabajar con objetos complejos. Sin embargo, puede ser más lenta que la Copia Superficial debido al costo de la creación de nuevas ubicaciones de memoria y la copia de los datos.
+
+## Deep Assignment
+
+Deep Assignment en C++ es un tipo de asignación de objetos en el que se realiza una copia profunda de los datos de un objeto a otro objeto existente. Al igual que con la Copia Profunda, en Deep Assignment se crea una nueva ubicación de memoria para el objeto de destino y se copian los datos del objeto original en la nueva ubicación de memoria. Esto asegura que los objetos tengan datos diferentes y no compartan la misma ubicación de memoria.
+
+En C++, la sobrecarga del operador de asignación (operator=) permite realizar una asignación de objeto profunda. Para implementar una asignación profunda, se debe asegurar que los miembros de datos del objeto tengan sus propias ubicaciones de memoria asignadas dinámicamente.
+
+Aquí hay un ejemplo que muestra cómo implementar la asignación profunda en C++:
+
+```C++
+  #include <iostream>
+using namespace std;
+
+class Deep {
+private:
+    int *data;
+public:
+    // Constructor
+    Deep(int d) {
+        data = new int;
+        *data = d;
+    }
+
+    // Copy constructor
+    Deep(const Deep &source)
+        : data(new int(*source.data)) {
+        cout << "Deep copy constructor - copying data." << endl;
+    }
+
+    // Assignment operator
+    Deep &operator=(const Deep &rhs) {
+        cout << "Deep assignment operator - copying data." << endl;
+        if (this == &rhs) // self-assignment check
+            return *this;
+        delete data; // free the memory allocated for data
+        data = new int(*rhs.data); // allocate new memory and copy the data
+        return *this;
+    }
+
+    // Destructor
+    ~Deep() {
+        delete data;
+        cout << "Destructor freeing data" << endl;
+    }
+
+    void display_data() {
+        cout << "Data value is " << *data << endl;
+    }
+};
+
+int main() {
+    Deep obj1 {100};
+    obj1.display_data();
+
+    Deep obj2 {200};
+    obj2.display_data();
+
+    obj2 = obj1; // Deep assignment
+    obj2.display_data();
+
+    *obj1.data = 300; // Modifying data in original object
+    obj1.display_data();
+    obj2.display_data(); // Data value in copy object is not changed
+
+    return 0;
+}
+
+```
+
+En este ejemplo, se define una clase Deep que tiene un miembro de datos data que es un puntero a un entero. El constructor y el constructor de copia implementan una Copia Profunda de data en la nueva ubicación de memoria. El operador de asignación sobrecargado implementa la asignación profunda. Antes de copiar los datos del objeto original al objeto de destino, se verifica si el objeto de destino no es el mismo objeto que el objeto original, ya que esto resultaría en una auto-asignación no deseada. Si son diferentes, se libera la memoria asignada previamente para data y se asigna una nueva ubicación de memoria dinámica para data en el objeto de destino. Finalmente, se copia el valor de data del objeto original en la nueva ubicación de memoria del objeto de destino.
+
+En la función principal, se crea un objeto obj1 y se muestra su valor data. Luego se crea otro objeto obj2 y se muestra su valor data. Se realiza una asignación profunda de obj1 a obj2, y se muestra el valor data de obj2. A continuación, se modifica el valor de data en el objeto original obj1, y se muestra el valor data de ambos objetos. Como se puede ver, la modificación en el objeto original no afecta al objeto asignado, ya que tienen punteros diferentes a la ubicación de memoria asignada para data.
+
+## Regla de los Tres
+
+La Regla de los Tres establece que, si se debe implementar cualquiera de los siguientes: destructor, constructor de copia u operador de asignación, para que una clase funcione correctamente, los tres deben ser implementados.
+
+## <span style='color: yellow;'>Copy Elision </span>
+
+Copy Elision en C++ es una técnica de optimización de código que permite evitar la copia innecesaria de objetos. En C++, cuando se realiza una copia de un objeto, se crea una nueva instancia del objeto en una nueva ubicación de memoria y se copian los datos del objeto original en la nueva ubicación de memoria. Sin embargo, en algunos casos, esta copia puede ser innecesaria y consumir recursos de la computadora.
+
+El Copy Elision permite al compilador omitir la copia de un objeto y en su lugar, utilizar directamente el objeto original en la nueva ubicación de memoria. Esta técnica se utiliza en algunas situaciones específicas, como cuando se devuelve un objeto desde una función o cuando se pasa un objeto a una función como argumento.
+
+Por ejemplo, supongamos que tenemos la siguiente clase:
+
+```C++
+class MyObject {
+  public:
+  MyObject() {
+  std::cout << "Constructor called" << std::endl;
+  }
+  MyObject(const MyObject& other) {
+  std::cout << "Copy constructor called" << std::endl;
+  }
+  ~MyObject() {
+  std::cout << "Destructor called" << std::endl;
+  }
+};
+```
+
+Si creamos un objeto de esta clase y lo copiamos a otro objeto:
+
+```C++
+MyObject obj1;
+MyObject obj2 = obj1; // copy constructor called
+```
+
+El constructor de copia se llama para realizar la copia del objeto. Sin embargo, si utilizamos el valor de retorno de una función que devuelve un objeto de esta clase:
+
+```C++
+MyObject get_object() {
+    MyObject obj;
+    return obj;
+}
+
+int main() {
+    MyObject obj = get_object();  // copy elision
+    return 0;
+}
+```
+
+El Copy Elision puede omitir la copia del objeto y en su lugar, el objeto original obj se utiliza directamente en la ubicación de memoria de obj en la función main(). Como resultado, el constructor de copia no se llama y se evita la creación de una instancia adicional del objeto.
+
+Es importante tener en cuenta que el Copy Elision no está garantizado por el estándar de C++, y depende de las optimizaciones específicas del compilador y la configuración del código fuente
+
+## <span style='color: yellow;'> Conversion Operator </span>
+
+Un operador de conversión (conversion operator) en C++ es un tipo de operador que permite convertir una instancia de una clase en un objeto de otro tipo. Este tipo de operador permite que los objetos de una clase se comporten como si fueran objetos de otro tipo.
+
+El operador de conversión se define como una función miembro de la clase y utiliza la palabra clave "operator" seguida del tipo de datos al que se va a convertir el objeto. La sintaxis es la siguiente:
+
+```C++
+ #include <iostream>
+#include <string>
+
+using namespace std;
+
+class Test {
+	int i{42};
+	string str;
+public:
+	operator int() const { return i; } //Es const porque no queremos modificar el objeto solo copiarlo.
+};
+
+int main() {
+	Test test;
+	int x = test + 5; // El compilador hara la conversion IMPLICITA de un objeto test a un entero gracias al operador.
+	cout << x << endl;
+}
+```
+
+En C++, hay dos tipos de conversiones de tipos: la conversión implícita (implicit conversion) y la conversión explícita (explicit conversion).
+
+## Conversion Implicita
+
+Una conversión implícita ocurre cuando no se solicita directamente una conversión.  
+Ocurre cuando el compilador reconoce que la conversión es necesaria para que el código compile.
+
+#### ¿Son siempre deseables las conversiones implícitas?
+
+Pueden ser útiles, por ejemplo en condiciones.
+
+if (obj) // Conversión implícita de obj a bool
+// El objeto es válido
+
+Sin embargo, a menudo ocurren cuando no se esperan, debido a errores de programación. En lugar de un error de compilación, obtenemos código que se comporta de manera extraña.
+
+En el ejemplo anterior tenemos un caso de conversion implicita al hacer
+
+```C++
+ int x = test + 3;
+```
+
+## Conversion Explicita
+
+La conversión explícita se produce cuando el programador especifica explícitamente la conversión de tipo utilizando un operador de conversión o una función de conversión. Esto se hace para indicar al compilador que realice una conversión de tipo específica, aunque no sea compatible de forma automática. Por lo general, esto se hace con un static_cast.
+
+En C++ Moderno, podemos declarar el operador de conversión como explícito. En este caso, la conversión solo se realizará si la solicitamos.  
+Si escribimos código que requiere una conversión implícita, obtendremos un error de compilación (¡con una excepción!).
+
+### ¿Hay alguna excepción a esto?
+
+Sí, si la conversión es a bool y ocurre dentro de una condicional, se permite una conversión implícita.
+
+Por ejemplo:
+
+```C++
+#include <iostream>
+
+using namespace std;
+
+class Test {
+	int i;
+	public:
+	explicit Test(int i) : i(i) {}
+};
+
+int main() {
+	Test test = 4;
+}
+```
+
+En este caso tendremos un error ya que no existe una casteo explicito al declara test = 4.
+
+Como se soluciona:
+
+```C++
+ #include <iostream>
+#include <string>
+
+using namespace std;
+
+class Test {
+	int i{42};
+	string str;
+public:
+	explicit operator int() const { return i; }           // Explicit conversion operator to int
+};
+
+int main() {
+	Test test;
+	// cout << test << endl; // Error: no match for operator <<
+	cout << static_cast<int>(test) << endl;
+}
+```
+
+Entonces la palabra clave "explicit" se utiliza en C++ para especificar que el constructor o la función de conversión solo se pueden llamar de manera explícita, es decir, que no se permiten conversiones implícitas. También se puede utilizar con el operador de conversión, como se mencionó anteriormente. Esto puede ser útil para prevenir errores de conversión inadvertidos y aumentar la legibilidad y claridad del código.
+
+## <span style='color: yellow;'>Default Member Functions </span>
+
+## Default
+
+En C++, la palabra "default" se usa en varios contextos y con diferentes significados, dependiendo del contexto en el que se utiliza. A continuación, se detallan los principales usos de la palabra "default" en C++:
+
+1. Constructor por defecto de una clase: En C++, una clase puede tener un constructor por defecto que se usa para inicializar los objetos de la clase cuando no se proporciona ningún valor. En este caso, el constructor por defecto se define utilizando la palabra clave "default". Por ejemplo:
+
+```C++
+class MyClass {
+public:
+    MyClass() = default;
+};
+
+```
+
+2. Operador de asignación por defecto: En C++, una clase puede tener un operador de asignación por defecto que se usa para asignar un objeto a otro cuando no se proporciona ninguna implementación de este operador. En este caso, el operador de asignación por defecto se define utilizando la palabra clave "default". Por ejemplo:
+
+```C++
+class MyClass {
+public:
+    MyClass& operator=(const MyClass& other) = default;
+};
+
+```
+
+3. Tambien se puede utilizar para definir un valor por defecto como parametro de una funcion. O en un switch case como el caso por defecto.
+
+## Deleted member functions
+
+En C++, una función miembro eliminada (deleted member function) es una función miembro de una clase que ha sido explícitamente eliminada mediante el uso de la palabra clave "delete". Esto significa que se ha especificado que la función no puede ser utilizada en el código de ninguna forma, lo que puede ser útil en ciertas situaciones para evitar comportamientos inesperados o peligrosos.
+
+Las funciones miembro eliminadas se utilizan comúnmente para evitar la copia o asignación de objetos de una clase, o para prohibir el uso de determinadas funciones miembro que no tienen sentido o que pueden causar problemas en el código. Por ejemplo, una clase que representa un archivo en el sistema de archivos podría tener una función miembro para copiar el archivo, pero si esta función no es deseada en la clase, se puede eliminar mediante la palabra clave "delete":
+
+```C++
+  class File {
+public:
+    File(const std::string& filename);
+    File(const File&) = delete;  // eliminamos el constructor de copia
+    File& operator=(const File&) = delete;  // eliminamos el operador de asignación
+    void copy() = delete;  // eliminamos la función para copiar el archivo
+    // otras funciones miembro...
+};
+
+```
+
+En este ejemplo, se ha eliminado el constructor de copia y el operador de asignación para evitar que se copien los objetos de la clase "File". También se ha eliminado la función "copy" para evitar que se copie el archivo, lo que puede ser peligroso o indeseado.
+
+Ejemplo 2:
+
+```C++
+ class Test {
+public:
+    Test(const Test&) = delete;                    // Deleted copy constructor
+    Test& operator =(const Test&) = delete;        // Deleted assignment operator
+public:
+    Test() = default;                              // Synthesized default constructor
+};
+
+int main() {
+	Test t1, t2;                                   // Use defaulted constructor
+	Test t3(t1);                                   // Error: use of deleted function
+	t2 = t1;                                       // Error: use of deleted function
+}
+
+```
+
+En este caso al ser eliminadas las funciones de copia y asignacion el compilador dara un error.
+
+## <span style='color: yellow;'>Operators and Overloading </span>
+
+En C++, los operadores pueden ser sobrecargados, lo que significa que pueden tener un comportamiento diferente dependiendo del tipo de datos que se están utilizando. La sobrecarga de operadores permite que los programadores definan cómo se deben realizar las operaciones con tipos de datos personalizados, lo que puede simplificar el código y hacer que sea más fácil de leer.
+
+La sobrecarga de operadores se realiza mediante la definición de funciones miembro o funciones amigas que implementan el comportamiento deseado para el operador. Por ejemplo, si se desea definir cómo se deben sumar dos objetos de una clase personalizada, se puede sobrecargar el operador "+" mediante la definición de una función miembro o una función amiga que implemente la suma.
+
+La sobrecarga de operadores es especialmente útil para trabajar con tipos de datos personalizados, como matrices, números complejos o fechas. Por ejemplo, una clase matriz puede sobrecargar el operador "\*" para realizar una multiplicación matricial, lo que puede hacer que el código sea más fácil de leer y entender.
+
+Es importante tener en cuenta que no todos los operadores pueden ser sobrecargados en C++. Algunos operadores, como el operador ternario (?:) y el operador de resolución de ámbito (::), no pueden ser sobrecargados.
+
+También es importante tener en cuenta que la sobrecarga de operadores puede hacer que el código sea menos eficiente si no se implementa correctamente. Por lo tanto, es importante asegurarse de que la sobrecarga de operadores se utilice de manera responsable y se pruebe cuidadosamente para garantizar que no afecte el rendimiento del programa.
+
+Un ejemplo de cómo sobrecargar el operador "+" en una clase Vector para sumar dos vectores:
+
+```C++
+  #include <iostream>
+using namespace std;
+
+class Vector {
+    private:
+        double x, y, z;
+    public:
+        Vector(double x, double y, double z) {
+            this->x = x;
+            this->y = y;
+            this->z = z;
+        }
+
+        Vector operator+(Vector& v) {
+            double sum_x = this->x + v.x;
+            double sum_y = this->y + v.y;
+            double sum_z = this->z + v.z;
+            return Vector(sum_x, sum_y, sum_z);
+        }
+
+        void print() {
+            cout << "(" << x << ", " << y << ", " << z << ")" << endl;
+        }
+};
+
+int main() {
+    Vector v1(1, 2, 3);
+    Vector v2(4, 5, 6);
+    Vector v3 = v1 + v2;
+    v1.print();
+    v2.print();
+    v3.print();
+    return 0;
+}
+
+```
+
+En este ejemplo, la clase Vector tiene una sobrecarga del operador "+" definida como una función miembro. La función toma una referencia a otro objeto Vector como argumento y devuelve un nuevo objeto Vector que es la suma de los dos vectores.
+
+En la función, se suman las coordenadas x, y, z de los dos vectores y se devuelve un nuevo objeto Vector que representa el vector resultante. Luego, en la función main, se crean dos objetos Vector v1 y v2 y se los suma usando el operador sobrecargado "+". El resultado se guarda en un nuevo objeto Vector v3 y se imprime en la consola.
+
+Este es un ejemplo simple, pero ilustra cómo la sobrecarga de operadores puede hacer que el código sea más fácil de leer y entender al permitir que los programadores definan un comportamiento personalizado para los operadores en clases personalizadas.
+
+### ¿Que operadores son utiles de sobrecargar?
+
+• Assignment operator =  
+• Equality operator ==  
+• Inequality operator !=  
+• Less than operator <  
+• Function call operator ()
+
+Es importante que al hacer tus propios operadores estos tengan el mismo comportamiento (o lo mas apriximado) al comportamiento habitual del operador que proporciona el lenguaje por defecto.
+
+## <span style='color: yellow;'> Friend keyword</span>
+
+En C++, la palabra clave "friend" se utiliza para declarar una función o clase como amiga de otra clase. Cuando una función o clase se declara como amigo de otra clase, tiene acceso a los miembros privados y protegidos de esa clase.
+
+Para declarar una función como amiga de una clase, se debe agregar la declaración "friend" dentro de la definición de la clase. Por ejemplo:
+
+```C++
+  class MyClass {
+   private:
+       int x;
+   public:
+       void setX(int val) {
+           x = val;
+       }
+       friend int getPrivateX(MyClass obj);
+};
+
+int getPrivateX(MyClass obj) {
+   return obj.x; // Acceso a la variable privada x
+}
+
+int main() {
+   MyClass obj;
+   obj.setX(42);
+   cout << "Valor privado x = " << getPrivateX(obj) << endl;
+   return 0;
+}
+```
+
+En este ejemplo, la función "getPrivateX" se declara como amiga de la clase "MyClass". Esto significa que la función puede acceder a la variable privada "x" de la clase MyClass, aunque esta variable no es accesible desde fuera de la clase. En el main, se crea un objeto de la clase MyClass y se llama a la función getPrivateX para obtener el valor de la variable privada x.
+
+La declaración "friend" también se puede utilizar para declarar una clase como amiga de otra clase. Esto significa que la clase amiga tiene acceso a los miembros privados y protegidos de la clase que la declaró como amiga. La declaración de una clase como amiga se hace dentro de la definición de la clase que otorga la amistad. Por ejemplo:
+
+```C++
+  class MyClass {
+    private:
+        int x;
+    public:
+        void setX(int val) {
+            x = val;
+        }
+        friend class MyFriendClass;
+};
+class MyFriendClass {
+    public:
+        void printPrivateX(MyClass obj) {
+            cout << "Valor privado x = " << obj.x << endl; // Acceso a la variable privada x
+        }
+};
+int main() {
+    MyClass obj;
+    obj.setX(42);
+    MyFriendClass friendObj;
+    friendObj.printPrivateX(obj);
+    return 0;
+}
+```
+
+Aunque la palabra clave "friend" puede ser útil en algunos casos, no es muy utilizada en C++ porque su uso puede romper el principio de encapsulamiento, que es una de las principales características de la programación orientada a objetos.
+
+El principio de encapsulamiento dice que los datos y comportamientos de un objeto deben estar ocultos detrás de una interfaz pública y que solo deben ser accesibles a través de métodos y funciones de la clase. Esto asegura que los datos estén protegidos y que el comportamiento de un objeto se mantenga consistente y seguro.
+
+El uso de la palabra clave "friend" otorga acceso directo a los datos privados de una clase, lo que puede permitir que otras funciones o clases manipulen y cambien los datos de forma no controlada. Esto puede violar el principio de encapsulamiento y hacer que el código sea menos seguro y menos mantenible.
+
+Una alternativa mas optima es crear una funcion miembro de la clase y que esta tenga acceso a los valores privados de la clase. Como setters y getters. Que son funciones especificas que permiten de forma controlada modificar el valor de la variable.
+
+## <span style='color: yellow;'>Member and Non-member Operators </span>
+
+Cuando declaramos un operador como miembro de la clase SI O SI el primer argumento que se le pasara al operador es un objeto de la misma clase. Por ejemplo si tenemos la suma de dos objetos:
+
+```C++
+class String {
+	string s;
+public:
+	// Constructors
+	String(const char* str): s(str) {}
+	String(const string& s): s(s) {}
+
+	String operator +(const String& arg1, const String& arg2) {
+	return arg1.s + arg2.s;
+}
+
+
+	void print() { cout << s << endl; }
+};
+
+int main() {
+	String w{"world"}, bang{"!"};
+	String wbang = w + bang;                         // Calls w.operator + (bang); OK
+	String hi = "hello " + w;                        // Cannot call "hello".operator + (w); Compiler error!
+	cout << "wbang: "; wbang.print();
+	cout << "hi: "; hi.print();
+}
+```
+
+En este caso tenemos la suma de dos objetos "hello " que es un const *char y "w" que es un objeto de la clase String.
+Como el operador es miembro de la clase este espera como primer argumento (es decir la primera expresion a analizar) un objeto de la misma clase. Es decir un String. Como no esta recibiendo un String sino un const *char da un error de compilacion.  
+Para suprimir este comportamiento por defecto del operador lo que se puede hacer es declarar al operador fuera de la clase de esta forma el operador puede esperar como primer argumento lo que sea. Como la funcion no es miembro y necesita acceder a las variables privadas de la clase, se la declara como una funcion amiga. Ejemplo:
+
+```C++
+ #include <iostream>
+#include <string>
+
+using namespace std;
+
+class String {
+	string s;
+public:
+	// Constructors
+	String(const char* str) : s(str) {}
+	String(const string& s) : s(s) {}
+
+	friend String operator +(const String& arg1, const String& arg2);
+
+	void print() { cout << s << endl; }
+};
+
+String operator +(const String& arg1, const String& arg2) {
+	return arg1.s + arg2.s;
+}
+
+int main() {
+	String w { "world" }, bang { "!" };
+	String wbang = w + bang;
+	String hi = "hello " + w;
+	cout << "wbang: "; wbang.print();
+	cout << "hi: "; hi.print();
+}
+```
+
+En este caso se realizara el casteo correspondiente de const char\* a String de forma implicita y se sumaran correctamente los dos objetos.
+
+## <span style='color: yellow;'> Diferent types of operators </span>
+
+## Addition
+
+Ejemplo de uso de un operador suma:
+
+```C++
+ #include <iostream>
+
+using namespace std;
+
+// Avoid potential confusion with std::complex
+class Complex {
+private:
+	double real{0.0};
+	double imag{0.0};
+public:
+	Complex(double r, double i): real(r), imag(i) {}
+	Complex(double r): real(r) {}
+
+	// We define the += operator as a member function
+	// This adds the real and imaginary parts separately and returns the modified object
+	Complex& operator +=(const Complex& rhs) {
+		real += rhs.real;                     // Assign new value of real member
+		imag += rhs.imag;                     // Assign new value of imag member
+		return *this;                         // Return modified object by value
+	}
+	void print() {
+		cout << "(" << real << ", " << imag << ")" << endl;
+	}
+};
+
+Complex operator + (const Complex& lhs, const Complex& rhs) {
+	Complex temp{lhs};                       // Make a copy of the lhs argument
+	temp += rhs;                              // Add the rhs argument to it
+	return temp;                              // Return the modified copy of the lhs argument
+}
+
+int main() {
+	Complex c1(1, 2);
+	Complex c2(3, 4);
+	cout << "c1: ";
+	c1.print();
+	cout << "c2: ";
+	c2.print();
+
+	Complex c3 = c1 + c2;
+	cout << "c3: ";
+	c3.print();
+
+	c1 += c2;
+	cout << "c1: ";
+	c1.print();
+
+	Complex c4 = 1 + c2;                      // Type conversion (int -> double -> Complex)
+	cout << "c4: ";
+	c4.print();
+}
+```
+
+## Equality and Inequality
+
+Ejemplo:
+
+```C++
+ #ifndef STUDENT_H
+#define STUDENT_H
+
+#include <string>
+
+class student
+{
+	std::string name; // Student's name - not necessarily unique
+	int id;			  // Student's ID number - unique to each student
+public:
+	student(std::string name, int id) : name(name), id(id) {}
+	friend bool operator==(const student &lhs, const student &rhs);
+	friend bool operator!=(const student &lhs, const student &rhs);
+	void print();
+};
+using namespace std;
+
+bool operator==(const student &lhs, const student &rhs)
+{
+	if (lhs.id == rhs.id)
+	{
+		return true;
+	}
+	return false;
+}
+bool operator!=(const student &lhs, const student &rhs)
+{
+	return !(lhs == rhs);
+}
+void student::print()
+{
+	cout << "Name: " << name << ", id: " << id << endl;
+}
+#endif // STUDENT_H
+```
+
+## Less-than
+
+Ejemplo:
+
+```C++
+ #include <iostream>
+#include <string>
+
+#include "student.h"
+
+using namespace std;
+
+bool operator ==(const student& lhs, const student& rhs) {
+	if (lhs.id == rhs.id) {
+		return true;
+	}
+	return false;
+}
+bool operator !=(const student& lhs, const student& rhs) {
+	return !(lhs == rhs);
+}
+
+bool operator <(const student& lhs, const student& rhs) {
+	return (lhs.id < rhs.id);                          // Order by ID (numerical sort)
+}
+
+void student::print() {
+	cout << "Name: " << name << ", id: " << id << endl;
+}
+```
+
+## Prefix and Postfix operator
+
+En programación, los términos "prefix" y "postfix" se utilizan comúnmente para describir dos tipos de operadores unarios, como el operador de incremento y decremento (++ y --). La diferencia entre ambos operadores es la posición en la que se colocan en relación al operando.
+
+Un operador de incremento o decremento en su forma prefix (o prefijo) se coloca antes del operando. Por ejemplo, **el operador de incremento prefix** se escribe como **_++variable_**. En este caso, la variable se incrementará antes de que se realice cualquier otra operación en la expresión que contiene la variable.
+
+Por otro lado, un **operador de incremento o decremento en su forma postfix** (o sufijo) se coloca después del operando. Por ejemplo, el operador de incremento postfix se escribe como **variable++**. En este caso, la variable se incrementará después de que se haya completado cualquier otra operación en la expresión que contiene la variable.
+
+Ejemplo:
+
+```C++
+ #include <iostream>
+
+using namespace std;
+
+class Complex {
+	double real;
+	double imag;
+public:
+	Complex(double real, double imag): real(real), imag(imag) {}
+
+	Complex& operator ++();     // Prefix ++ operator
+	Complex operator ++(int);   // Postfix ++ operator
+	Complex& operator --();     // Prefix -- operator
+	Complex operator --(int);   // Postfix -- operator
+
+	void print() { cout << "(" << real << ", " << imag << ")" << endl; }
+};
+
+// Prefix ++ operator
+Complex& Complex::operator ++() {
+	++real;
+	return *this;
+}
+
+// Postfix ++ operator
+Complex Complex::operator ++(int) {
+	Complex temp(*this);
+	++real;
+	return temp;
+}
+
+// Prefix -- operator
+Complex& Complex::operator --() {
+	--real;
+	return *this;
+}
+
+// Postfix -- operator
+Complex Complex::operator --(int) {
+	Complex temp(*this);
+	--real;
+	return temp;
+}
+
+int main() {
+	Complex c(5, 6);
+	cout << "Initial value of c: ";
+	c.print();
+
+	++c;
+	cout << "After calling ++c: ";
+	c.print();
+
+	Complex d = c++;
+	cout << "After calling c++: ";
+	c.print();
+	cout << "Value of d: ";
+	d.print();
+
+	--c;
+	cout << "After calling --c: ";
+	c.print();
+
+	d = c--;
+	cout << "After calling c--: ";
+	c.print();
+	cout << "Value of d: ";
+	d.print();
+}
+```
+
+## Function Call operator
+
+El Function Call operator es un operador especial en C++ que permite a los objetos de una clase ser invocados como si fueran funciones. En otras palabras, el Function Call operator sobrecarga el operador () para que pueda ser usado en una instancia de la clase, lo que permite que los objetos de esa clase se comporten como funciones.
+
+El operador de llamada a función se define como un método de la clase con la siguiente sintaxis:
+
+```C++
+class MyClass {
+public:
+    RetType operator() (ParamType1 param1, ParamType2 param2, ...) {
+        // Código que implementa la llamada a función
+    }
+};
+
+```
+
+En esta sintaxis, MyClass es el nombre de la clase, RetType es el tipo de retorno de la función que se comporta como un objeto, y ParamType1, ParamType2, etc. son los tipos de los parámetros que se pasan a la función.
+
+Al sobrecargar el operador de llamada a función, se puede crear un objeto que se comporta como una función, lo que puede ser útil en muchas situaciones. Por ejemplo, se puede crear un objeto de clase que actúe como un functor (un objeto que se puede llamar como una función), lo que permite al programador encapsular un comportamiento específico en un objeto y pasarlo como argumento a una función genérica que lo utilizará para realizar operaciones específicas.
+
+Por ejemplo, supongamos que queremos implementar una clase Multiplier que multiplique dos números. Podemos sobrecargar el operador de llamada a función para que el objeto de Multiplier pueda ser llamado como si fuera una función.
+
+```C++
+  class Multiplier {
+public:
+    Multiplier(int factor) : factor_(factor) {}
+
+    int operator() (int num) const {
+        return num * factor_;
+    }
+
+private:
+    int factor_;
+};
+
+int main() {
+    Multiplier multiply_by_2(2);
+
+    int num = 5;
+    int result = multiply_by_2(num);  // Llamada como una función
+
+    std::cout << "Result: " << result << std::endl;  // Imprime "Result: 10"
+    return 0;
+}
+```
+
+## Print out data Members
+
+Ejemplo:
+
+```C++
+ #include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+class Test {
+	int i{42};
+	string str{"Hello"s};
+public:
+	/*
+	* A member function which prints out the data members of the Test class.
+	* This version will work with any output stream, not just cout.
+	* We pass the output stream by reference as it will be modified inside the function
+	*/
+	void print(ostream& os) const {
+		os << "i = " << i << ", str = " << str;
+	}
+};
+
+
+/*
+ * Overloaded operator <<  which prints out the data members of the Test class.
+ * This calls the Test class's print() method and returns the stream
+*/
+std::ostream& operator <<(std::ostream & os, const Test& test) {
+    test.print(os);
+    return os;
+}
+
+int main() {
+	Test test;
+	cout << test << endl;
+
+	ofstream ofile("test.txt");
+
+	if (!ofile.is_open()) {
+		cout << "could not open test.txt" << endl;
+		return -1;
+	}
+
+	ofile << test << endl;
+}
+```
+
+# Algorithms Introduction and Lambda Expressions
+
+## <span style='color: yellow;'>Algorithm Overview </span>
+
+"#include <algorithm>" en C++ incluye la biblioteca de algoritmos estándar de C++. Esta biblioteca proporciona una variedad de funciones útiles para manipular y ordenar contenedores (como vectores, listas, mapas, etc.) y otros tipos de datos.
+
+La biblioteca de algoritmos de C++ incluye funciones para realizar operaciones como buscar elementos en un contenedor, ordenar elementos, mezclar contenedores, comparar contenedores, encontrar el valor mínimo o máximo en un contenedor, y mucho más.
+
+Algunas de las funciones más comunes que se utilizan de esta biblioteca son "sort", "binary_search", "max_element", "min_element", "find", "replace", "reverse", "unique", entre otras.
+
+En resumen, la biblioteca de algoritmos de C++ es una herramienta muy útil para cualquier programador que trabaje con contenedores y necesite realizar operaciones como ordenar, buscar y manipular sus elementos.
+
+Lista de algunos de los algoritmos más comúnmente utilizados en C++:
+
+- Ordenamiento:
+  - sort(): Ordena un rango de elementos en orden ascendente.
+  - stable_sort(): Ordena un rango de elementos en orden ascendente, preservando el orden relativo de elementos iguales.
+  - partial_sort(): Ordena los primeros "n" elementos de un rango en orden ascendente.
+  - nth_element(): Ordena un rango de elementos de tal forma que el elemento "n" esté en la posición que le corresponde si se ordenaran todos los elementos.
+- Búsqueda:
+  - binary_search(): Busca un elemento en un rango ordenado.
+  - lower_bound(): Encuentra el primer elemento en un rango ordenado que es - mayor o igual que un valor dado.
+  - upper_bound(): Encuentra el primer elemento en un rango ordenado que es mayor que un valor dado.
+- Algoritmos sobre rangos:
+  - accumulate(): Calcula la suma de los elementos en un rango.
+  - count(): Cuenta el número de elementos iguales a un valor dado en un rango.
+  - min(): Encuentra el valor mínimo en un rango.
+  - max(): Encuentra el valor máximo en un rango.
+  - reverse(): Invierte el orden de los elementos en un rango.
+  - rotate(): Rota los elementos en un rango, moviendo los "n" primeros elementos al final.
+- Modificación de contenedores:
+  - fill(): Asigna un valor dado a todos los elementos en un rango.
+    generate(): Genera valores para los elementos en un rango utilizando una función dada.
+  - remove(): Elimina todos los elementos iguales a un valor dado de un rango.
+  - replace(): Reemplaza todos los elementos iguales a un valor dado en un rango con otro valor dado.
+  - transform(): Realiza una transformación en los elementos de un rango utilizando una función dada.
+- Otros:
+  - next_permutation(): Genera la siguiente permutación lexicográfica de un rango de elementos.
+  - prev_permutation(): Genera la permutación lexicográfica anterior de un rango de elementos.
+  - find(): Busca un elemento en un rango.
+  - swap(): Intercambia el valor de dos elementos.
+
+## <span style='color: yellow;'>Lambda Functions </span>
+
+Las funciones lambda son funciones anónimas que se pueden definir dentro del código de C++. Estas funciones no tienen un nombre definido y se utilizan para encapsular una lógica específica. Las funciones lambda se pueden utilizar en lugar de definir una función separada y se pueden pasar como argumentos a otras funciones.
+
+Un ejemplo de función lambda sería la siguiente:
+
+```C++
+ auto sum = [](int x, int y) { return x + y; };
+```
+
+En este ejemplo, se define una función lambda que toma dos argumentos "x" e "y" y devuelve la suma de los mismos.
+
+Ahora, para utilizar una función lambda con el algoritmo find de la librería algorithm, primero se debe definir la función lambda que se utilizará para buscar el elemento en un rango de elementos. A continuación, se puede llamar a la función find con la función lambda como argumento.
+
+Por ejemplo, considera la siguiente lista de números:
+
+```C++
+ std::vector<int> numeros = {1, 2, 3, 4, 5};
+  //Si queremos encontrar el primer número par en la lista, podemos usar una función lambda de la siguiente manera:
+  auto it = std::find(numeros.begin(), numeros.end(), [](int x){ return x % 2 == 0; });
+```
+
+En este ejemplo, la función lambda verifica si un número es par o no utilizando el operador módulo (%). La función lambda se pasa como tercer argumento a la función find(). Si se encuentra un número par en la lista, la función find() devuelve un iterador apuntando al elemento encontrado. Si no se encuentra el elemento, devuelve un iterador apuntando al final de la lista.
+
+Es importante tener en cuenta que cuando se utiliza una función lambda como argumento de una función de la biblioteca estándar de C++, como find(), el compilador deduce automáticamente el tipo de la función lambda mediante el uso de la palabra clave "auto".
+
+Una pseudo-implementacion de como funcionaria find seria asi:
+
+```C++
+ iter find_if(iter begin, iter end, Callable func){
+  for(iter it = begin; it!=end; it++) //loop over range, stopping before "last"
+  {
+    if(func(*it)){                    //Is the value we are looking for?
+      return it;                      // it is- stop looping and return to caller
+    }
+  }
+  return end;                         //End of loop, no match.
+ }
+```
+
+Esto va a llamar a la funcion para cada elemento que busca y cuando encuentre uno con la condicion de retorno de la funcion, devolvera un iterador apuntando a ese elemento.
+
+Un ejemplo de esto usando un functor seria asi:
+
+```C++
+ #include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+// Functor
+
+class ge_n {
+  private:
+    const int n;
+  public:
+    ge_n(const int n) : n(n) {}
+
+    bool operator () (const string& str) const { //sobrecargo al operador () para que la clase pueda ser llamada como una funcion
+        return str.size() > n; //retorno de la funcion si el parametro es mayor que un numero n.
+    }
+};
+
+int main() {
+	vector<string> names = { "Dilbert", "PHB", "Dogbert", "Asok", "Ted", "Alice", "Wally" };
+
+	// Find the first element with more than 5 characters
+	// Pass a functor object as predicate
+	auto res = find_if(cbegin(names), cend(names), ge_n(5));
+
+	// Display it
+	if (res != cend(names))
+		cout << "The first word with > 5 characters is \"" << *res << "\"\n";
+}
+```
+
+Otro ejemplo de funciones lambda usando el algoritmo sort().
+
+```C++
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+void sortVector(vector<int> &numeros);
+using namespace std;
+
+int main(int argc, char const *argv[])
+{
+
+    vector<int> array{10, 27, 3, 14, 15};
+    sortVector(array);
+    return 0;
+}
+
+void sortVector(vector<int> &numeros)
+{
+    std::sort(numeros.begin(), numeros.end(), [](int i, int j)
+              {
+                std::cout << i << " " << j << std::endl;
+                return (i > j); });
+    for (auto numero : numeros)
+    {
+        std::cout << numero << " ";
+    }
+    std::cout << std::endl;
+}
+```
+
+## <span style='color: yellow;'>Lambda expressions and Capture </span>
+
+En C++, una función lambda es una función anónima que se puede definir y usar en el lugar donde se necesita. Las funciones lambda pueden capturar variables de su entorno externo, lo que les permite acceder a los datos fuera de su alcance.
+
+En C++, las funciones lambda pueden acceder a las variables locales de su entorno externo, **_siempre y cuando se proporcionen a través de la captura de variables_**. Si una variable no se proporciona a través de la captura de variables, no se puede acceder a ella dentro de la función lambda.
+
+Por defecto, las funciones lambda no tienen acceso a las variables locales fuera de su alcance, a menos que se proporcionen a través de la captura de variables. La captura de variables es un mecanismo que permite que las funciones lambda accedan a las variables fuera de su alcance, capturando estas variables por valor o por referencia.
+
+```C++
+#include <iostream>
+
+int main() {
+    int x = 10;
+
+    auto lambda = [x](){
+        std::cout << "x = " << x << std::endl;
+    };
+
+    lambda(); // salida: x = 10
+}
+```
+
+En este ejemplo, la variable x se captura por valor en la función lambda. La función lambda tiene acceso a la variable x y la muestra por pantalla.
+
+Si intentamos acceder a una variable local que no se ha proporcionado a través de la captura de variables, se producirá un error de compilación. Por ejemplo:
+
+```C++
+#include <iostream>
+
+int main() {
+    int x = 10;
+
+    auto lambda = [](){
+        std::cout << "x = " << x << std::endl; // error de compilación: 'x' no está definido en este ámbito
+    };
+
+    lambda();
+}
+```
+
+En este ejemplo, la función lambda intenta acceder a la variable x que no se ha proporcionado a través de la captura de variables. Como resultado, se produce un error de compilación.  
+Las funciones lambda pueden acceder a variables globales sin necesidad de capturarlas. Las variables globales se declaran fuera de cualquier función o bloque y están disponibles para todo el programa.
+
+```C++
+#include <iostream>
+
+int global_var = 10;
+
+int main() {
+
+    auto lambda = [](){
+        std::cout << "global_var = " << global_var << std::endl;
+    };
+
+    lambda(); // salida: global_var = 10
+}
+```
+
+#### IMPORTANTE
+
+Cuando una variable se captura por valor dentro de una función lambda, se crea una copia de la variable en la lambda. Por defecto, esta copia se trata como constante, lo que significa que la lambda no puede modificar la variable original.
+
+```C++
+ int main() {
+	vector<string> words{ "a", "collection", "of", "words", "with", "varying", "lengths" };
+
+	int n{5}, idx{-1};                                // Add another variable for the index of the match
+	auto res = find_if(cbegin(words), cend(words),
+//					[n, idx] (const string& str) { ++idx; return str.size() > n; }              // Error!
+					[n, idx] (const string& str) mutable { ++idx; return str.size() > n; }      // OK
+	 );
+
+	if (res != cend(words)) {
+		cout << R"(The first word which is more than )" << n << R"( letters long is ")";
+		cout << *res << R"(")" << endl;
+		cout << "The index is " << idx << endl;                // Always prints zero
+	}
+}
+
+```
+
+En este caso al intentar incrementar el indice "idx" como por defecto se transforma en constante las variables produciria un error. Para ello se utiliza la palabra clave **_mutuable_** la cual nos permite modificar el valor de un const dentro de la funcion lambda. Otra forma seria pasar el valor por referencia, pero se tiene que tener en cuenta que se modificaria el valor original de la variable.
+
+```C++
+ int main() {
+	vector<string> words{ "a", "collection", "of", "words", "with", "varying", "lengths" };
+
+	int max{5}, idx{-1};                                // Add another variable for the index of the match
+
+	auto res = find_if(cbegin(words), cend(words),
+					// Capture idx by reference
+					[max, &idx] (const string& str) { ++idx; return str.size() > max; }
+	 );
+
+	if (res != cend(words)) {
+		cout << R"(The first word which is more than )" << max << R"( letters long is ")";
+		cout << *res << R"(")" << endl;
+		cout << "Its index is " << idx << endl;
+	}
+}
+```
+
+## <span style='color: yellow;'>Implicit Capture </span>
+
+La "captura implícita" en las funciones lambda se refiere a la capacidad de una lambda para capturar automáticamente variables locales dentro del alcance de la lambda. En lugar de especificar explícitamente las variables que se deben capturar, la lambda puede "capturar" automáticamente todas las variables locales que se utilizan dentro de la lambda.
+
+```C++
+#include <iostream>
+int main() {
+    int x = 10;
+    auto lambda = [&]() {
+        std::cout << "x = " << x << std::endl;
+    };
+    lambda();   // salida: x = 10
+}
+```
+
+La función lambda captura automáticamente la variable x, que se encuentra dentro del alcance de la lambda. El operador & indica que se debe realizar una captura por referencia, lo que significa que la lambda puede modificar la variable x.
+
+Tambien se puede capturar por valor todas las variables.
+
+```C++
+#include <iostream>
+
+int main() {
+    int x = 10;
+    int y = 5;
+    auto lambda = [=]() {
+        std::cout << "x = " << x << ", y = " << y << std::endl;
+//        x++;    // Error: x se captura por valor y no se puede modificar
+        y++;    // OK: y se captura por valor, pero se puede modificar
+    };
+    lambda();   // salida: x = 10, y = 5
+}
+```
+
+Si quisiera elegir cuales variables quiero tomar por referecia la sintaxis seria como sigue:
+
+```C++
+#include <iostream>
+
+int main() {
+    int x = 10;
+    int y = 5;
+    auto lambda = [x, &y]() {
+        std::cout << "x = " << x << ", y = " << y << std::endl;
+        x++;    // OK: x se captura por valor, pero se puede modificar dentro de la lambda
+        y++;    // OK: y se captura por referencia, y se puede modificar dentro de la lambda
+    };
+    lambda();   // salida: x = 10, y = 5
+}
+```
+
+En este ejemplo, la función lambda captura la variable x por valor y la variable y por referencia utilizando la sintaxis []. Dentro de la lambda, x se trata como una constante por defecto, ya que se ha capturado por valor, mientras que y se puede modificar, ya que se ha capturado por referencia.
+
+### This
+
+Cuando le pasas this a una función lambda, la función lambda puede capturar el puntero this y acceder a los miembros de la clase. Esto es útil cuando deseas utilizar los miembros de la clase dentro de una función lambda.
+
+Por ejemplo, considera la siguiente clase Person:
+
+```C++
+ class Person {
+public:
+    Person(const std::string& name, int age) : name_(name), age_(age) {}
+
+    void PrintInfo() const {
+        auto lambda = [this]() {
+            std::cout << "Name: " << name_ << ", Age: " << age_ << std::endl;
+        };
+        lambda();
+    }
+
+private:
+    std::string name_;
+    int age_;
+};
+
+int main() {
+    Person person("Alice", 30);
+    person.PrintInfo(); // salida: Name: Alice, Age: 30
+}
+```
+
+En este ejemplo, la función PrintInfo() crea una función lambda que captura el puntero this de la clase Person. Dentro de la lambda, se utiliza el puntero this para acceder a los miembros de la clase name* y age*.
+
+La captura implícita puede ser útil en situaciones en las que la lambda necesita acceder a muchas variables locales. En lugar de especificar explícitamente cada variable, la lambda puede capturar automáticamente todas las variables dentro del alcance.
+
+Sin embargo, es importante tener en cuenta que la captura implícita también puede ser peligrosa si no se utiliza con cuidado. Si la lambda captura una variable local que se elimina antes de que la lambda se ejecute, se produce un comportamiento indefinido. Además, la captura implícita puede hacer que el código sea menos legible si se utilizan muchas variables locales en diferentes partes del código. Por lo tanto, es importante considerar cuidadosamente si la captura implícita es apropiada para una lambda específica.
+
+Cuando ejecutamos varias veces una funcion lambda y lso valores son pasados por valor. Esta tendra en su heap los valores modificados. Por lo que si la llamamos varias veces es importante recordar que tendra los valores guardados y no se reiniciaran al salir del scope.
+
+## <span style='color: yellow;'>Storing Lambdas </span>
+
+Como vimos en ejemplos anteriores igualabamos una variable a una funcion lambda. Esto es una forma de guardar una funcion lambda para despues ser llamada.
+
+```C++
+   auto lambda = [x](){ std::cout << "x = " << x << std::endl;};
+```
+
+La variable debe ser del mismo tipo que el functor generador por el compilador. Como esto no es posible conocerlo, usamos la palabra **auto**.
+
+Ejemplo de uso:
+
+```C++
+ int main() {
+	vector<string> words{"a", "collection", "of", "words", "with", "varying", "lengths"};
+	int max{5};
+
+	// Save the lambda expression in a variable
+	auto is_longer_than = [max](const string& str) { return str.size() > max; };
+
+	// Pass this variable as the predicate
+	auto res = find_if(cbegin(words), cend(words), is_longer_than);
+
+	// Display it
+	if (res != cend(words)) {
+		cout << R"(The first word which is more than )" << max << R"( letters long is ")";
+		cout << *res << R"(")" << endl;
+	}
+}
+```
+
+## <span style='color: yellow;'>Returning Lambda functions </span>
+
+Tambien podemos retornar funciones lamda de la siguiente forma:
+
+```C++
+ // Function which returns a lambda function
+auto greeter(const string& salutation) {
+	return [salutation](const string& name) { return salutation + ", "s + name; };       // The lambda function
+}
+
+int main() {
+	// Store the lambda function in a variable
+	auto greet = greeter("Hello"s);
+
+	// Call the lambda function
+	cout << "Greeting: " << greet("James") << endl;
+	cout << "Greeting: " << greet("students") << endl;
+}
+```
+
+En este caso lalutation es una variable local dentro de la funcion, por lo que se debera pasar entre los corchetes de la funcion lambda para que esta pueda ser utilizada.
+
+## <span style='color: yellow;'>Partial evaluation </span>
+
+partial evaluation (evaluación parcial en español) es una técnica de optimización que permite evaluar una función con algunos de sus argumentos fijos, reduciendo el costo de calcular la función completa. En C++, esto se puede lograr utilizando funciones de orden superior, como las lambda expressions.
+
+Por ejemplo, supongamos que tenemos una función que suma dos números enteros, Podemos utilizar una lambda expression para crear una función que suma un número entero a un valor fijo.
+
+```C++
+  #include <iostream>
+using namespace std;
+
+int sum(int a, int b) {
+  return a + b;
+}
+
+int main() {
+  auto add_five = [](int x) { return sum(5, x); };
+
+  int result = add_five(10);
+  cout << result << endl; // output: 15
+
+  return 0;
+}
+```
+
+En este ejemplo, creamos una función lambda add_five que toma un número entero x y lo suma a 5 utilizando la función sum definida anteriormente. En el main(), llamamos a add_five con el argumento 10, lo que debería devolver 15 como resultado.
+
+Cabe destacar que la función lambda add_five se puede utilizar en cualquier lugar donde se requiera una función que tome un argumento entero y devuelva un resultado entero. Además, como la función sum es definida fuera de la función lambda, es posible reutilizarla en otros lugares del código.
+
+Otro ejemplo orientado a IC:
+
+```C++
+  const int analogPin = A0;
+const int ledPin = 9;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int sensorValue = analogRead(analogPin);
+  int brightness = map(sensorValue, 0, 1023, 0, 255);
+
+  auto setBrightness = [](int level) { analogWrite(ledPin, level); };
+  setBrightness(brightness);
+
+  Serial.print("Sensor value: ");
+  Serial.print(sensorValue);
+  Serial.print(" Brightness: ");
+  Serial.println(brightness);
+
+  delay(100);
+}
+```
+En este ejemplo, definimos las constantes analogPin y ledPin para representar los pines del sensor y del LED, respectivamente. En el setup(), configuramos el pin del LED como salida y comenzamos la comunicación serial.
+
+En el loop(), leemos el valor del sensor analógico utilizando la función analogRead() y lo mapeamos a un valor de brillo entre 0 y 255 utilizando la función map(). A continuación, definimos una función lambda setBrightness que toma un nivel de brillo como argumento y lo establece en el pin del LED utilizando la función analogWrite(). Luego, llamamos a setBrightness con el valor de brillo calculado anteriormente.
+
+Finalmente, imprimimos el valor del sensor y el nivel de brillo correspondiente en el monitor serial y esperamos 100 milisegundos antes de repetir el ciclo.
+
+En este ejemplo, la función lambda setBrightness nos permite controlar el brillo del LED de manera eficiente y reutilizable utilizando solo un argumento. Además, como el valor del sensor solo se lee una vez en cada ciclo, el código es más eficiente en términos de tiempo de procesamiento y recursos de Arduino.

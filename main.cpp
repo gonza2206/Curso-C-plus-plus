@@ -3,7 +3,7 @@
 #include <cstdlib> // Incluye la librería necesaria para rand() y srand()
 #include <vector>
 #include "excercise.h"
-
+#include <algorithm>
 class Test
 {
 private:
@@ -237,8 +237,18 @@ int main()
 
     std::string sentence{"To be, or not to be, that is the question:"};
     std::cout << "Ejercicio: " << exercise::exclaim(sentence) << std::endl;
-    
 
+    int x1{42}, y1{99}, z1{0};
 
+    auto lam = [=, &z1]() mutable
+    { ++x1; ++y1; z1 = x1 + y1; };
+    {
+        lam();
+        std::cout << "x: " << x1 << "y: " << y1 << "z: " << z1 << std::endl;
+    }
+    lam();
+    std::cout << "x: " << x1 << "y: " << y1 << "z: " << z1 << std::endl;
+    lam();
+    std::cout << "x: " << x1 << "y: " << y1 << "z: " << z1 << std::endl;
     return 0;
 }
