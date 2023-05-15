@@ -237,18 +237,18 @@ int main()
 
     std::string sentence{"To be, or not to be, that is the question:"};
     std::cout << "Ejercicio: " << exercise::exclaim(sentence) << std::endl;
-
-    int x1{42}, y1{99}, z1{0};
-
-    auto lam = [=, &z1]() mutable
-    { ++x1; ++y1; z1 = x1 + y1; };
+    struct datos
     {
-        lam();
-        std::cout << "x: " << x1 << "y: " << y1 << "z: " << z1 << std::endl;
-    }
-    lam();
-    std::cout << "x: " << x1 << "y: " << y1 << "z: " << z1 << std::endl;
-    lam();
-    std::cout << "x: " << x1 << "y: " << y1 << "z: " << z1 << std::endl;
+        int dato = 10;
+        bool esta = false;
+    };
+    datos variable1;
+    datos *p_datos = &variable1;
+    std::cout << " dato: " << p_datos->dato << std::endl;
+
+    int x2 = 5;
+    int y2 = std::move(x2); // Error: no se puede mover un lvalue
+
+
     return 0;
 }

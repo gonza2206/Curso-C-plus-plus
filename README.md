@@ -3863,6 +3863,34 @@ Ejemplo de uso:
 	}
 }
 ```
+## Importante 
+
+```C++  
+     int x{42}, y{99}, z{0};
+
+    auto lam = [=, &z]() mutable
+    {
+        ++x;
+        ++y;
+        z = x + y;
+        std::cout << "x " << x << "; y " << y << ";  z " << z << std::endl;
+    };
+
+    lam();
+    std::cout << x << " " << y << " " << z << std::endl;
+    lam();
+    std::cout << x << " " << y << " " << z << std::endl; 
+```
+
+Cuando pasamos una variable por valor y permitimos que estan puedan ser modificables con la palabra clave "mutuable" se creara una copia de la variable dentro de la funcion lambda (Que es un objeto creado por el compilador). 
+Los valores de estas variables dentro de la funcion se mantienen entre distintos llamados. Por lo que es importante tener eso en cuenta. Si bien a nivel local estas variables no cambian de valor, dentro de la funcion lambda si y el valor se mantiene. 
+### Porque se mantiene el valor? 
+En este caso, los valores de x e y se mantienen dentro de la función lambda porque se capturan por valor usando el especificador de captura por valor = en la definición de la función lambda.
+
+Cuando se captura una variable por valor en una función lambda, se crea una copia de esa variable dentro del ***objeto lambda***. Esta copia persiste dentro del objeto lambda entre llamadas a la función lambda.
+
+El objeto lambda se destruye cuando sale del scope en el que fue declarado. En el ejemplo anterior es cuando sale de la funcion main(). 
+
 
 ## <span style='color: yellow;'>Returning Lambda functions </span>
 
@@ -3947,3 +3975,5 @@ En el loop(), leemos el valor del sensor analógico utilizando la función analo
 Finalmente, imprimimos el valor del sensor y el nivel de brillo correspondiente en el monitor serial y esperamos 100 milisegundos antes de repetir el ciclo.
 
 En este ejemplo, la función lambda setBrightness nos permite controlar el brillo del LED de manera eficiente y reutilizable utilizando solo un argumento. Además, como el valor del sensor solo se lee una vez en cada ciclo, el código es más eficiente en términos de tiempo de procesamiento y recursos de Arduino.
+
+Basicamente la evaluacion parcial nos permite usar las funciones lambda para llamar a otras funciones pero con algunos parametros fijos. Esto hace que sea facil llamar a funciones con pocos parametros. Por eso se evalua parcialmente la funcion porque algunos valores son fijos y otros variables. 
